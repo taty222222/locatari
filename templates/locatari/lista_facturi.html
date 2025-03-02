@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<body class="flex flex-col min-h-screen bg-blue-50 shadow-lg">
+
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<title>{% block title %}{% endblock %} | Administratie bloc</title>
+
+
+
+
+<body>
+
+<div class="overscroll-auto">
+
+</div>
+<div class="py-6 px-8 flex items-center justify-between bg-blue-950 rounded-lg">
+    <div class="flex flex-shrink-0 items-center">
+        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="">
+
+
+        <h1 class="text-xl text-blue-700 hover:text-blue-500">Lista Facturi</h1>
+
+
+        
+    </div>
+
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+
+                <a href="{% url 'home' %}"
+                   class="rounded-md  bg-blue-500 shadow-lg shadow-blue-500/50 hover:text-blue-900 px-3 py-2 text-sm font-medium text-white"
+                   aria-current="page">Acasa</a>
+                <a href="{% url 'logout' %}"
+                   class="rounded-md bg-sky-500 shadow-lg shadow-sky-500/50 hover:text-cyan-900 px-3 py-2 text-sm font-medium text-white"
+                   aria-current="page">Log out</a>
+                
+
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<br>
+
+
+<div>
+    <div>
+        <div>
+
+            <a href="{% url 'add_water_meter_reading' %}"
+               class="shrink-0 px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Contoare/Indecsi</a>
+           
+            <a href="{% url 'lista_avize' %}"
+               class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Lista avize</a>
+            <a href="{% url 'plata_card' %}"
+               class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Plata card
+               </a>
+            <a href="{% url 'reclamatii_list' %}"
+               class="shrink-0 px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Lista reclamatii
+               </a>
+            <a href="{% url 'submit_reclamatii' %}"
+               class="shrink-0 px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Comunicare/Reclamatii</a>
+           <a href="{% url 'lista_apartamente' %}" class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Lista apartamentelor</a>
+
+        </div>
+    </div>
+</div>
+
+
+
+<br>
+
+
+<h3 class="text-2xl font-bold mb-4 text-blue-800 hover:text-blue-950">Istoric Facturi</h3>
+<table class="max-w-full bg-white border border-gray-200 rounded-xl"> 
+    <thead class="bg-blue-100">
+    
+    
+    <tr> 
+        <th class="py-2 px-4 border-b text-blue-800 text-left">Număr Factură</th> 
+        <th class="py-2 px-4 border-b text-blue-800 text-left">Data Emiterii</th> 
+        <th class="py-2 px-4 border-b text-blue-800 text-left">Data Scadentă</th> 
+        <th class="py-2 px-4 border-b text-blue-800 text-left">Suma</th>
+        <th class="py-2 px-4 border-b text-blue-800 text-left">Luna</th> 
+        <th class="py-2 px-4 border-b text-blue-800 text-left">Status</th> 
+    </tr> 
+    </thead> 
+    <tbody> 
+    
+    
+    {% for factura in facturi %}
+        <tr class="odd:bg-white even:bg-gray-50"> 
+        <td class="py-2 px-4 border-b text-teal-800">{{ factura.id }}</td> 
+        <td class="py-2 px-4 border-b text-teal-800">{{ factura.data_emisa }}</td> 
+        <td class="py-2 px-4 border-b text-teal-800">{{ factura.data_scadenta }}</td>
+        <td class="py-2 px-4 border-b text-teal-800">{{ factura.suma }}</td> 
+        <td class="py-2 px-4 border-b text-teal-800">{{ factura.status }}</td>
+    </tr> {% empty %} <tr>
+        <td colspan="5">Nu există facturi disponibile.</td> 
+    </tr>
+    {% endfor %} 
+    </tbody> 
+</table> 
+</body> 
+</html>
+
+
+<footer class="mt-auto py-8 px-8 bg-blue-950 text-center rounded-lg">
+
+    <ul class="space-y-2">
+        <li><a href="{% url 'about' %}" class="text-lg text-teal-200 hover:text-teal-700">About</a></li>
+        <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Contact</a></li>
+        <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Terms of use</a></li>
+        <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Privacy policy</a></li>
+    </ul>
+    <br>
+    <p class="text-white">Copyright (c) 2024 - Administrare bloc</p>
+</footer>
+
+
+
+

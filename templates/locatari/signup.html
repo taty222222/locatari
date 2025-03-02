@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<body class="flex flex-col min-h-screen bg-blue-50 shadow-lg">
+
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% block title %}{% endblock %}
+
+<form method="post">
+    {% csrf_token %}
+</form>
+<div class="overscroll-auto">
+</div>
+<body>
+
+<div class="py-6 px-8 flex items-center justify-between bg-blue-950 rounded-lg">
+    <div class="flex flex-shrink-0 items-center">
+        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+             alt="Your Company">
+
+
+        <h1 class="text-xl text-blue-200 hover:text-blue-500">Sign up</h1>
+
+
+        
+    </div>
+    <div class="hidden sm:ml-6 sm:block">
+        <div class="flex space-x-4">
+            
+             <a href="{% url 'home' %}"
+                   class="rounded-md  bg-blue-500 shadow-lg shadow-blue-500/50 hover:text-blue-900 px-3 py-2 text-sm font-medium text-white"
+                   aria-current="page">Acasa</a>
+                <a href="{% url 'login' %}"
+                   class="rounded-md bg-sky-500 shadow-lg shadow-sky-500/50 hover:text-cyan-900 px-3 py-2 text-sm font-medium text-white"
+                   aria-current="page">Log in</a>
+                
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<main class="py-6 px-8">
+    <div class="max-w-xl mx-auto py-8 bg-blue-950 text-center rounded-lg">
+        <h1 class="text-3xl text-teal-200">Sign up</h1>
+        
+        
+        <form method="post" action=".">
+        {% csrf_token %}
+            
+        
+            
+
+         <div class="mt-6 px-8 space-y-4">
+            
+                <label class="text-2xl text-teal-200">Username</label><br>
+                {{ form.username }}
+                
+
+
+            </div><div class="mt-6 px-8 space-y-4">
+            
+                <label class="text-2xl text-teal-200">First Name</label><br>
+                {{ form.first_name }}
+                
+
+
+            </div><div class="mt-6 px-8 space-y-4">
+            
+                <label class="text-2xl text-teal-200">Last Name</label><br>
+                {{ form.last_name }}
+                
+
+
+            </div>
+            <div class="mt-6 px-8 space-y-4">
+                <label class="text-2xl text-teal-200">E-mail</label><br>
+                {{ form.email }}
+               
+
+
+            </div>
+
+            <div class="mt-6 px-8 space-y-4">
+                <label class="text-2xl text-teal-200">Password</label><br>
+                {{ form.password }}
+                
+
+
+            </div>
+            <div class="mt-6 px-8 space-y-4">
+                <label class="text-2xl text-teal-200">Repeat password</label><br>
+                {{ form.password2 }}
+                
+
+
+             </div>
+            {% if form.errors or form.non_field_errors %}
+                <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %}
+                   {{ field.errors }}
+                {% endfor %}
+                
+                {{ form.non_field_errors }}   
+                </div>
+                
+            {% endif %}
+<br>
+       
+        
+             
+                <button class="py-4 px-8 bg-blue-700 shadow-lg shadow-blue-500/50 hover:text-white px-3 py-2 text-sm font-medium text-blue-200 rounded-lg">Sign up</button>
+         
+        </form>
+    </div>
+</main>
+
+
+
+
+<footer class="mt-auto py-8 px-8 bg-blue-950 text-center rounded-lg">
+
+    <ul class="space-y-2">
+        <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">About</a></li>
+        <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Contact</a></li>
+        <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Terms of use</a></li>
+        <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Privacy policy</a></li>
+    </ul>
+    <br>
+    <p class="text-white">Copyright (c) 2024 - Administrare bloc</p>
+</footer>
+
+</body>
+</html>

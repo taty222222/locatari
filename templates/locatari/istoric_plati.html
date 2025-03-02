@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<body class="flex flex-col min-h-screen bg-blue-50 shadow-lg">
+
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<title>{% block title %}{% endblock %} | Lista apartamente</title>
+
+
+</html>
+
+<body>
+
+
+<div class="overscroll-auto">
+
+</div>
+<div class="py-6 px-8 flex items-center justify-between bg-blue-950 rounded-lg">
+    <div class="flex flex-shrink-0 items-center">
+        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="">
+
+
+        <h1 class="text-xl text-blue-500 hover:text-blue-800">Lista apartamente</h1>
+
+
+        
+    </div>
+
+
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+
+
+                <a href="{% url 'home' %}"
+                   class="rounded-md  bg-blue-500 shadow-lg shadow-blue-500/50 hover:text-blue-900 px-3 py-2 text-sm font-medium text-white"
+                   aria-current="page">Acasa</a>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'logout' %}"
+                       class="rounded-md bg-emerald-500 shadow-lg shadow-emerald-500/50 hover:text-emerald-900 px-3 py-2 text-sm font-medium text-white"
+                       aria-current="page">Log out</a>
+                {% else %}
+                    <a href="{% url 'signup' %}"
+                       class="rounded-md bg-sky-500 shadow-lg shadow-cyan-500/50 hover:text-cyan-900 px-3 py-2 text-sm font-medium text-white"
+                       aria-current="page">Sign up</a>
+
+                    <a href="{% url 'login' %}"
+                       class="rounded-md bg-emerald-500 shadow-lg shadow-emerald-500/50 hover:text-emerald-900 px-3 py-2 text-sm font-medium text-white"
+                       aria-current="page">Log in</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<br>
+<br>
+
+<div>
+    <div>
+        <div>
+
+
+            {% if request.user.is_authenticated %}
+
+                <a href="{% url 'add_water_meter_reading' %}"
+                   class="shrink-0 px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Contoare/Indecsi</a>
+                <a href="{% url 'lista_facturi' %}"
+                   class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Lista
+                    Facturi</a>
+                <a href="{% url 'istoric_plati' %}"
+                   class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Istoric
+                    Plati</a>
+                <a href="{% url 'plata_card' %}"
+                   class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Plata
+                    card
+                </a>
+                <a href="{% url 'reclamatii_list' %}"
+                   class="shrink-0 px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Lista reclamatii
+                </a>
+                <a href="{% url 'submit_reclamatii' %}"
+                   class="shrink-0 px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Comunicare/Reclamatii</a>
+                <a href="{% url 'lista_apartamente' %}"
+                   class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Lista
+                    apartamentelor</a>
+                <a href="{% url 'locatari_list' %}"
+                   class="shrink-0  px-7 py-6 bg-blue-100 text-sm font-medium text-blue-900 hover:bg-blue-900 hover:text-teal-200 rounded-lg">Lista
+                    locatari</a>
+
+                </div>
+                </div>
+                </div>
+
+            {% else %}
+                <div class="block p-9 max-w-sm flex-container-center justify-between bg-white rounded-lg border border-gray-200">
+                    <h1 class="mb-5 text-3xl font-bold text-blue-900 hover:text-blue-600">
+
+                        Acces online pentru proprietari
+
+                    </h1>
+
+                    <br>
+
+                    <ul class="space-y-7 ">
+                        <li><a href="#"
+                               class="rounded-md px-5 py-4 bg-blue-50 text-sm font-medium text-blue-900 hover:bg-blue-700 hover:text-teal-200 rounded-lg">Administrarea
+                            intretinerii</a></li>
+                        <li><a href="#"
+                               class="rounded-md px-5 py-4 bg-blue-50 text-sm font-medium text-blue-900 hover:bg-blue-700 hover:text-teal-200 rounded-lg">Plata
+                            facturilor</a></li>
+                        <li><a href="#"
+                               class="rounded-md px-5 py-4 bg-blue-50 text-sm font-medium text-blue-900 hover:bg-blue-700 hover:text-teal-200 rounded-lg">Gestionarea
+                            indecsilor</a></li>
+                        <li><a href="#"
+                               class="rounded-md px-5 py-4 bg-blue-50 text-sm font-medium text-blue-900 hover:bg-blue-700 hover:text-teal-200 rounded-lg">Gestionarea
+                            locatarilor</a></li>
+                        <li><a href="#"
+                               class="rounded-md px-5 py-4 bg-blue-50 text-sm font-medium text-blue-900 hover:bg-blue-700 hover:text-teal-200rounded-lg">Istoricul
+                            platilor</a></li>
+                        <li><a href="#"
+                               class="rounded-md px-5 py-4 bg-blue-50 text-sm font-medium text-blue-900 hover:bg-blue-700 hover:text-teal-200 rounded-lg">Lista
+                            apartamentelor</a></li>
+                    </ul>
+
+                </div>
+                
+
+            {% endif %}
+
+<br><br>
+<br>
+
+
+<h2 class="text-2xl font-bold mb-4 text-blue-800 hover:text-blue-950">Istoric plati</h2>
+<table class="min-w-full bg-white border border-gray-200 rounded-xl">
+    <thead class="bg-blue-100">
+
+  
+        <tr>
+            <th class="py-2 px-4 border-b text-blue-800 text-left">Index</th>
+            <th class="py-2 px-4 border-b text-blue-800 text-left">Amount</th>
+            <th class="py-2 px-4 border-b text-blue-800 text-left">Payment Date</th>
+            <th class="py-2 px-4 border-b text-blue-800 text-left">Status</th>
+        </tr>
+        </thead>
+    </table>
+    <tbody>
+    {% for payment in payments %}
+        <tr class="odd:bg-white even:bg-gray-50">
+            <td class="py-2 px-4 border-b text-teal-800">{{ payment.index.value }} la {{ payment.index.date }}</td>
+            <td class="py-2 px-4 border-b text-teal-800">{{ payment.amount }}</td>
+            <td class="py-2 px-4 border-b text-teal-800">{{ payment.payment_date }}</td>
+            <td class="py-2 px-4 border-b text-teal-800">{{ payment.is_paid|yesno:"Paid,Not Paid" }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4">No payments found.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+    <footer class="mt-auto py-8 px-8 bg-blue-950 text-center rounded-lg">
+
+        <ul class="space-y-2">
+            <li><a href="{% url 'about' %}" class="text-lg text-teal-200 hover:text-teal-700">About</a></li>
+            <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Contact</a></li>
+            <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Terms of use</a></li>
+            <li><a href="#" class="text-lg text-teal-200 hover:text-teal-700">Privacy policy</a></li>
+        </ul>
+        <br>
+        <p class="text-white">Copyright (c) 2024 - Administrare bloc</p>
+    </footer>
+
+    {% block content %}
+    {% endblock %}
+
+
+</body>
+
