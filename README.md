@@ -31,6 +31,9 @@ Tech Stack:
 • Database: SQL (MySQL/PostgreSQL/etc.)
 
 
+Feel free to contribute or customize the project based on your needs!
+
+
 
 
 
